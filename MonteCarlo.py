@@ -10,5 +10,6 @@ authors: Isaac Soares, Kaden Shuman, Chang you Yu
 Purpose:
 
 """
+npts = int
 
-
+# def integrate_me(f, distrib, npts=100):
