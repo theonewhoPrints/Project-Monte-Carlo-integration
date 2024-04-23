@@ -65,15 +65,15 @@ def integrate_me(f, distrib, npts):
     err = np.std(f / ps) / np.sqrt(npts)
     return mu, err
 
-print("(1)The caculated mean and error is: " , integrate_me(func1, scipy.stats.uniform(loc=-10, scale=20), 10000))
+print("(1)The caculated mean and error is: " , integrate_me(func1, scipy.stats.uniform(loc=-10, scale=20), 1000))
 
 for j in range(0, 6):
-    print("(2, i = " + str(i) + " )The caculated mean and error is: " , integrate_me(func2, scipy.stats.uniform(loc=-1, scale=2), 10000))
+    print("(2, i = " + str(i) + " )The caculated mean and error is: " , integrate_me(func2, scipy.stats.uniform(loc=-1, scale=2), 1000))
     i+= 1
 
-print("(3)Integration for standard normal " , integrate_me(stdNormal1, scipy.stats.uniform(loc=-10, scale=20), 10000))
+print("(3)Integration for standard normal " , integrate_me(stdNormal1, scipy.stats.uniform(loc=-10, scale=20), 1000))
 
-print("(4)Integration for weighted normal " , integrate_me(weighted_normal, scipy.stats.uniform(loc=-10, scale=20), 10000))
+print("(4)Integration for weighted normal " , integrate_me(weighted_normal, scipy.stats.uniform(loc=-10, scale=20), 1000))
 
 
 
