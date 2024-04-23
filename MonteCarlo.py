@@ -50,9 +50,9 @@ def integrate_me(f, distrib, npts):
 
 print("(1 )The caculated mean and error is: " , integrate_me(func1, scipy.stats.uniform(loc=-10, scale=20), 10000))
 
-print("The caculated mean and error is: " , integrate_me(func1, distrib1, 100))
+print("The caculated mean and error is: " , integrate_me(func1, scipy.stats.uniform(loc=-10, scale=20), 100))
 
-print("Integration for standard normal " , integrate_me(stdNormal, distrib1, 10000))
+print("Integration for standard normal " , integrate_me(stdNormal, scipy.stats.uniform(loc=-10, scale=20), 10000))
 for j in range(0, 6):
     print("(2, i = " + str(i) + " )The caculated mean and error is: " , integrate_me(func2, scipy.stats.uniform(loc=-1, scale=2), 10000))
     i+= 1
