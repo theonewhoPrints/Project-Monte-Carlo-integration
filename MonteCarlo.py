@@ -14,10 +14,10 @@ Purpose: maths
 npts = int
 
 distrib0 = scipy.stats.truncnorm(-10, 10, loc=0, scale=1)
-distrib1 = scipy.stats.uniform(loc=-3, scale=6)
+distrib1 = scipy.stats.uniform(loc=-10, scale=20)
 
 def func1(x):
-    return 1;
+    return 1
 
 #The function itself
 def rosenbrock_function(x, y):
@@ -34,7 +34,7 @@ def integrate_me(f, distrib, npts):
     return mu, err
 
 
-print("The caculated mean and error is: " , integrate_me(func1, distrib0, 1000))
+print("The caculated mean and error is: " , integrate_me(func1, distrib1, 10000))
 
 """
 class MyTwoDUniform(object):
