@@ -1,4 +1,5 @@
 import numpy as np
+import math
 import scipy.stats
 from scipy.stats import multivariate_normal
 
@@ -19,6 +20,10 @@ distrib1 = scipy.stats.uniform(loc=-10, scale=20)
 def func1(x):
     return 1
 
+def stdNormal(x):
+    pdf = (1 / (math.sqrt(2 * math.pi))) * math.exp(-0.5 * (x ** 2))
+    return pdf
+
 #The function itself
 def rosenbrock_function(x, y):
     return (1 - x)**2 + 100 * (y - x**2)**2
@@ -28,13 +33,20 @@ def rosenbrock_function(x, y):
 def integrate_me(f, distrib, npts):
     x = distrib.rvs(npts)
     ps = distrib.pdf(x)
-    f = f(x)
+    sum = 0
+    for val in x:
+        sum += f(val)
+    #f = f(x)
+    mean = sum/npts
+    f = mean
     mu = np.mean(f / ps)
     err = np.std(f / ps) / np.sqrt(npts)
     return mu, err
 
 
-print("The caculated mean and error is: " , integrate_me(func1, distrib1, 10000))
+print("The caculated mean and error is: " , integrate_me(func1, distrib1, 100))
+
+print("Integration for standard normal " , integrate_me(stdNormal, distrib1, 10000))
 
 """
 class MyTwoDUniform(object):
