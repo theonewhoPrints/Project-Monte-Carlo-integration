@@ -22,9 +22,26 @@ i = 0
 def func1(x):
     return 1
 
-def stdNormal(x):
-    pdf = (1 / (math.sqrt(2 * math.pi))) * math.exp(-0.5 * (x ** 2))
+def stdNormal1(x):
+    mean = 0
+    std_dev = 1
+    pdf = (1 / (std_dev * math.sqrt(2 * math.pi))) * math.exp(-0.5 * ((x - mean) / std_dev) ** 2)
     return pdf
+
+def stdNormal2(x):
+    mean = -3
+    std_dev = 1
+    pdf = (1 / (std_dev * math.sqrt(2 * math.pi))) * math.exp(-0.5 * ((x - mean) / std_dev) ** 2)
+    return pdf
+
+def stdNormal3(x):
+    mean = 3
+    std_dev = 3
+    pdf = (1 / (std_dev * math.sqrt(2 * math.pi))) * math.exp(-0.5 * ((x - mean) / std_dev) ** 2)
+    return pdf
+
+def weighted_normal(x):
+    return 0.7*stdNormal2(x) + 0.3*stdNormal3(x)
 
 def func2(x):
     return scipy.special.eval_legendre(i,x )
@@ -52,7 +69,9 @@ print("(1 )The caculated mean and error is: " , integrate_me(func1, scipy.stats.
 
 print("The caculated mean and error is: " , integrate_me(func1, scipy.stats.uniform(loc=-10, scale=20), 100))
 
-print("Integration for standard normal " , integrate_me(stdNormal, scipy.stats.uniform(loc=-10, scale=20), 10000))
+print("Integration for standard normal " , integrate_me(stdNormal1, scipy.stats.uniform(loc=-10, scale=20), 10000))
+
+print("Integration for weighted normal " , integrate_me(weighted_normal, scipy.stats.uniform(loc=-10, scale=20), 10000))
 for j in range(0, 6):
     print("(2, i = " + str(i) + " )The caculated mean and error is: " , integrate_me(func2, scipy.stats.uniform(loc=-1, scale=2), 10000))
     i+= 1
