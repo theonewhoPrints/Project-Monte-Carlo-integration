@@ -1,4 +1,5 @@
 import numpy as np
+import scipy.special
 import scipy.stats
 from scipy.stats import multivariate_normal
 
@@ -14,10 +15,14 @@ Purpose: maths
 npts = int
 
 distrib0 = scipy.stats.truncnorm(-10, 10, loc=0, scale=1)
-distrib1 = scipy.stats.uniform(loc=-10, scale=20)
+
+i = 0
 
 def func1(x):
     return 1
+
+def func2(x):
+    return scipy.special.eval_legendre(i,x )
 
 #The function itself
 def rosenbrock_function(x, y):
@@ -33,8 +38,12 @@ def integrate_me(f, distrib, npts):
     err = np.std(f / ps) / np.sqrt(npts)
     return mu, err
 
+print("(1 )The caculated mean and error is: " , integrate_me(func1, scipy.stats.uniform(loc=-10, scale=20), 10000))
 
-print("The caculated mean and error is: " , integrate_me(func1, distrib1, 10000))
+for j in range(0, 6):
+    print("(2, i = " + str(i) + " )The caculated mean and error is: " , integrate_me(func2, scipy.stats.uniform(loc=-1, scale=2), 10000))
+    i+= 1
+
 
 """
 class MyTwoDUniform(object):
