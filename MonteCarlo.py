@@ -75,7 +75,7 @@ print("(3)Integration for standard normal " , integrate_me(stdNormal1, scipy.sta
 
 print("(4)Integration for weighted normal " , integrate_me(weighted_normal, scipy.stats.uniform(loc=-10, scale=20), 1000))
 
-"""
+
 class MyTwoDUniform(object):
     def __init__(self, bounds=None):
         self.bounds = np.array(bounds)
@@ -92,7 +92,7 @@ class MyTwoDUniform(object):
 
 
 # Example of integration
-my2d = MyTwoDUniform(bounds=[-3, 3])
+my2d = MyTwoDUniform(bounds=[[-5,5],[-5,5]])
 mu = np.array([1, -0.5])
 cov = np.array([[1., -0.1], [-0.1, 0.05]])
 
@@ -102,5 +102,4 @@ def f(x1, x2):
     return multivariate_normal.pdf(x, mu, cov)
 
 
-integrate_me(lambda x: f(*(x.T)), my2d)
-"""
+print("Main Project:", integrate_me(lambda x: f(*(x.T)), my2d, 1000))
