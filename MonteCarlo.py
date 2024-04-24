@@ -75,8 +75,6 @@ print("(3)Integration for standard normal " , integrate_me(stdNormal1, scipy.sta
 
 print("(4)Integration for weighted normal " , integrate_me(weighted_normal, scipy.stats.uniform(loc=-10, scale=20), 10000))
 
-
-
 """
 class MyTwoDUniform(object):
     def __init__(self, bounds=None):
