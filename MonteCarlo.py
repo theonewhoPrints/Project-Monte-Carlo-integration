@@ -102,4 +102,4 @@ def f(x1, x2):
     return multivariate_normal.pdf(x, mu, cov)
 
 
-print("Main Project:", integrate_me(lambda x: f(*(x.T)), my2d, 1000))
+print("Main Project:", integrate_me(lambda x: rosenbrock_function(*(x.T)), my2d, 1000))
