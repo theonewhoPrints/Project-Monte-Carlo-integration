@@ -44,11 +44,12 @@ def weighted_normal(x):
     return 0.7*stdNormal2(x) + 0.3*stdNormal3(x)
 
 def func2(x):
-    return scipy.special.eval_legendre(i,x )
+    return scipy.special.eval_legendre(i,x )**2
 
 #The function itself
-def rosenbrock_function(x, y):
-    return (1 - x)**2 + 100 * (y - x**2)**2
+def rosenbrock_function(x1, x2):
+    minus_lnL = np.array(np.power((1.-x1), 2) + 100.* np.power((x2-x1**2),2),dtype=float)
+    return minus_lnL
 
 
 # One dimensional example
@@ -95,11 +96,5 @@ class MyTwoDUniform(object):
 my2d = MyTwoDUniform(bounds=[[-5,5],[-5,5]])
 mu = np.array([1, -0.5])
 cov = np.array([[1., -0.1], [-0.1, 0.05]])
-
-
-def f(x1, x2):
-    x = np.array([x1, x2]).T
-    return multivariate_normal.pdf(x, mu, cov)
-
 
 print("Main Project:", integrate_me(lambda x: rosenbrock_function(*(x.T)), my2d, 1000))
